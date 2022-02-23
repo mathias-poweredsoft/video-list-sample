@@ -8,18 +8,13 @@
 </ion-header>
 
 <ion-content>
-    <app-title>
+    <app-title title="Hello World" style="margin-bottom: 20px;">
         <ng-container *appSubtitle>
             Salut la!
         </ng-container>
-        Hello World
     </app-title>
 
 
-    <br />
-    <br />
-    <br />
-    <br />
     <h2>{{ currentDate | date:'medium' | lowercase | titlecase | spaces }}</h2>
 
     <h2>{{ counter }}</h2>
