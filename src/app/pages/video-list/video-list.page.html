@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Video List</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngIf="!videos || videos.length === 0">
+        <ion-card-header>
+            <ion-card-title>Oh no!</ion-card-title>
+            <ion-card-subtitle>No videos found.</ion-card-subtitle>
+        </ion-card-header>
+    </ion-card>
+
+    <ion-card *ngFor="let video of videos">
+        <ion-card-header>
+            <ion-card-title>{{ video.title }}</ion-card-title>
+            <ion-card-subtitle *ngIf="video.description">{{ video.description }}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+            <div class="video-wrapper">
+                <iframe width="100%" frameborder="0"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen [src]="getVideoUrl(video.video_id)">
+                </iframe>
+            </div>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-infinite-scroll position="bottom" (ionInfinite)="loadData($event)" [disabled]="atEnd">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

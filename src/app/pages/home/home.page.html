@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Contact-Us</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <app-title>
+        <ng-container *appSubtitle>
+            Salut la!
+        </ng-container>
+        Hello World
+    </app-title>
+
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <h2>{{ currentDate | date:'medium' | lowercase | titlecase | spaces }}</h2>
+
+    <h2>{{ counter }}</h2>
+    <ion-button color="primary" (click)="add()">Add</ion-button>
+</ion-content>
+

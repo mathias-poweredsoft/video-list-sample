@@ -1,0 +1,5 @@
+<h2><ng-content></ng-content></h2>
+<h4 *ngIf="subtitle">
+    <ng-container [ngTemplateOutlet]="subtitle.template">
+    </ng-container>
+</h4>
