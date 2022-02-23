@@ -14,6 +14,7 @@ import { HomePage } from './pages/home/home.page';
 import { SpacesPipe } from './pipes/spaces.pipe';
 import { TitleComponent } from './components/title/title.component';
 import { SubtitleDirective } from './components/title/directives/subtitle.directive';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [AppComponent, VideoListPage, ContactUsPage, HomePage, SpacesPipe, TitleComponent, SubtitleDirective],
@@ -23,7 +24,8 @@ import { SubtitleDirective } from './components/title/directives/subtitle.direct
     IonicModule.forRoot(), 
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScrollingModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

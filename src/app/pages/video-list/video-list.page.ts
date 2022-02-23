@@ -9,7 +9,6 @@ import { finalize } from 'rxjs/operators'
 })
 
 export class VideoListPage implements OnInit {
-
   videos: IVideo[] = [];
   page: number = 0;
   atEnd: boolean = false;
@@ -32,17 +31,15 @@ export class VideoListPage implements OnInit {
       .pipe(
         finalize(() => {
           this.page += 1;
-          if (target) {
+          if (target)
             target.complete();
-          }
           
-          this.loading = true;
+          this.loading = false;
         })
       )
       .subscribe((results) => {
-        if (results.length === 0) {
+        if (results.length === 0)
           this.atEnd = true;
-        }
 
         this.videos = [
           ...this.videos, 
@@ -54,6 +51,7 @@ export class VideoListPage implements OnInit {
   }
 
   loadData(event: Event) {
+    console.log('loading data');
     const target = event.target as any;
     this.getVideos(target);
   }

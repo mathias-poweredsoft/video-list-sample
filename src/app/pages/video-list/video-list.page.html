@@ -15,7 +15,7 @@
         </ion-card-header>
     </ion-card>
 
-    <ion-card *ngFor="let video of videos">
+    <!--<ion-card *ngFor="let video of videos">
         <ion-card-header>
             <ion-card-title>{{ video.title }}</ion-card-title>
             <ion-card-subtitle *ngIf="video.description">{{ video.description }}</ion-card-subtitle>
@@ -29,9 +29,28 @@
                 </iframe>
             </div>
         </ion-card-content>
-    </ion-card>
+    </ion-card>-->
 
-    <ion-infinite-scroll position="bottom" (ionInfinite)="loadData($event)" [disabled]="atEnd">
+    <cdk-virtual-scroll-viewport [itemSize]="videos.length" minBufferPx="900" maxBufferPx="1350">
+        <ion-card *cdkVirtualFor="let video of videos">
+            <ion-card-header>
+                <ion-card-title>{{ video.title }}</ion-card-title>
+                <ion-card-subtitle *ngIf="video.description">{{ video.description }}</ion-card-subtitle>
+            </ion-card-header>
+    
+            <ion-card-content>
+                <div class="video-wrapper">
+                    <iframe width="100%" frameborder="0"
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen [src]="getVideoUrl(video.video_id)">
+                    </iframe>
+                </div>
+            </ion-card-content>
+        </ion-card>
+    </cdk-virtual-scroll-viewport>
+
+
+    <ion-infinite-scroll position="bottom" (ionInfinite)="loadData($event)" [disabled]="atEnd || loading">
         <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
         </ion-infinite-scroll-content>
     </ion-infinite-scroll>

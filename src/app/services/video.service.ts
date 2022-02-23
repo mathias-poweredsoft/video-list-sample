@@ -18,7 +18,7 @@ export interface IVideo {
 export class VideoService {
 
   endpoint: string = 'https://my-json-server.typicode.com/mathias-poweredsoft/video-database';
-  pageSize = 1;
+  pageSize = 3;
 
   constructor(private http: HttpClient) { }
 
