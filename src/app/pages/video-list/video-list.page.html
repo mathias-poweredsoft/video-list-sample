@@ -31,7 +31,7 @@
         </ion-card-content>
     </ion-card>-->
 
-    <cdk-virtual-scroll-viewport [itemSize]="videos.length" minBufferPx="900" maxBufferPx="1350">
+    <cdk-virtual-scroll-viewport itemSize="300" minBufferPx="1200" maxBufferPx="2000">
         <ion-card *cdkVirtualFor="let video of videos">
             <ion-card-header>
                 <ion-card-title>{{ video.title }}</ion-card-title>
